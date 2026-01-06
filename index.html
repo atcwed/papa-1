@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¡Feliz Cumpleaños Papá Yair! 👔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --color-primario: #1e3c72;
+  --color-secundario: #2a5298;
+  --color-acento: #4ca1af;
+}
+
+body {
+  margin: 0; height: 100vh;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  display: flex; justify-content: center; align-items: center;
+  font-family: 'Quicksand', sans-serif; overflow: hidden;
+}
+
+.contenedor { width: 360px; height: 600px; perspective: 1600px; }
+
+.carta {
+  width: 100%; height: 100%; position: relative;
+  transform-style: preserve-3d; transition: transform 1.5s ease;
+  cursor: pointer;
+}
+
+.carta.abierta { transform: rotateY(-175deg); }
+
+.portada, .interior {
+  position: absolute; width: 100%; height: 100%;
+  border-radius: 20px; backface-visibility: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4); padding: 25px; box-sizing: border-box;
+}
+
+.portada {
+  background: linear-gradient(135deg, #2c3e50, var(--color-acento));
+  color: white; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; border: 5px solid rgba(255,255,255,0.8);
+}
+.portada span { font-size: 4rem; }
+.portada h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin: 15px 0; }
+
+.interior {
+  background: #fdfdfd; color: #333; transform: rotateY(180deg);
+  overflow-y: auto; display: flex; flex-direction: column;
+}
+
+h1 { text-align: center; color: var(--color-primario); font-family: 'Dancing Script', cursive; margin: 0 0 10px 0; }
+
+.mensaje { font-size: 1.05rem; line-height: 1.6; text-align: center; flex-grow: 1; }
+
+.firma {
+  margin-top: 15px; text-align: right; font-style: italic;
+  color: var(--color-primario); font-family: 'Dancing Script', cursive; font-size: 1.3rem;
+}
+
+.spotify-container { 
+  margin-top: 15px; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  background: #000;
+  line-height: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="carta" id="miCarta" onclick="abrirCarta()">
+
+    <div class="portada">
+      <span>🎁</span>
+      <h2>Para mi Papá Yair</h2>
+      <p>Toca para abrir la sorpresa ✨</p>
+    </div>
+
+    <div class="interior">
+      <h1>🎈 ¡Feliz Cumpleaños! 🎈</h1>
+
+      <div class="mensaje">
+      Papá Yair, hoy celebro tu vida y agradezco a Dios por tenerte como mi guía y mi mayor ejemplo. 👔<br><br>
+      Gracias por tu fuerza, por tu apoyo incondicional y por todo lo que haces por nosotros día a día. Eres mi gran orgullo. 🌟<br><br>
+      Que Dios te bendiga siempre, te proteja y que este nuevo año esté lleno de salud, éxito y muchísima felicidad. 🙏✨<br><br>
+      ¡Te quiero mucho! Disfruta tu día.
+      </div>
+
+      <div class="firma">
+        Con todo mi cariño 💌<br>
+        Tu hijo Elías
+      </div>
+      
+      <div class="spotify-container">
+        <iframe src="https://open.spotify.com/embed/track/2SST9z0S8u4pXw28K6K6Yp?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function abrirCarta(){
+  const carta = document.getElementById('miCarta');
+  if(!carta.classList.contains('abierta')){
+    carta.classList.add('abierta');
+    lanzarConfeti();
+  }
+}
+
+function lanzarConfeti() {
+  var end = Date.now() + (5 * 1000);
+  (function frame() {
+    confetti({ particleCount: 4, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#1e3c72', '#4ca1af', '#ffffff'] });
+    confetti({ particleCount: 4, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#1e3c72', '#4ca1af', '#ffffff'] });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  }());
+}
+</script>
+
+</body>
+</html>
